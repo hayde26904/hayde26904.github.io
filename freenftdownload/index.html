@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free NFT download</title>
+</head>
+<body>
+    <script src="filesaver.js"></script>
+    <center>
+        <br><br>
+            <h1 id="header">Free NFT Download</h1>
+            <br><br><br><br>
+            <p id="filename"></p>
+            <button class="arrow" id='aleft' onClick="limg()">⬅</button>&nbsp;&nbsp;&nbsp;
+            <img id="imageview" width="500px" height="200px">
+            &nbsp;&nbsp;&nbsp;<button class="arrow" id='aright' onClick="rimg()">➡</button>
+            <br><br><br>
+            <button id='downloadbtn' onclick="downloadimg(imagelist[currentimage],'NFTDOWNLOAD.'+imagelist[currentimage].split('.').slice(-1))">DOWNLOAD&nbsp;&nbsp;&nbsp;<b>⬇</b></button>
+    </center>
+
+    <script>
+        var imagelist = ['images/mogus1.jfif','images/fortniteamongus.jfif','images/gruisamongus.jfif','images/gruamongushappymeal.jpg','images/thomastheamongus.jpg'];
+        var imageview = document.getElementById('imageview');
+        var downloadbtn = document.getElementById('downloadbtn');
+        var filename = document.getElementById('filename');
+        var header = document.getElementById('header');
+        var currentimage = 0;
+
+        var currenttheme;
+
+        imageview.src = imagelist[currentimage];
+
+        filename.innerHTML = imagelist[currentimage];
+
+        function downloadimg(src,filename){
+
+            var image = new Image(); 
+            image.crossOrigin = "anonymous"; 
+            image.src = src; 
+ 
+            document.body.append(image); 
+            image.onload = () => { 
+            var canvas = document.createElement("canvas"); 
+            canvas.width = image.width; 
+            canvas.height = image.height; 
+            canvas.getContext("2d").drawImage(image, 0, 0); 
+ 
+            var blob;
+            blob = canvas.toDataURL("image/jpeg"); 
+ 
+            var a = document.createElement("a"); 
+            a.href = blob; 
+            a.download = filename; 
+            document.body.appendChild(a); 
+            a.click(); 
+            document.body.removeChild(a); 
+            }; 
+            document.body.removeChild(image); 
+
+        }
+
+        function limg(){
+
+            if(currentimage == 0){ 
+                currentimage = imagelist.length-1 
+            } else {
+                currentimage--;
+            }
+
+            imageview.src = imagelist[currentimage];
+            filename.innerHTML = imagelist[currentimage];
+
+
+        }
+
+        function rimg(){
+
+            if(currentimage == imagelist.length-1){ 
+                currentimage = 0; 
+            } else {
+                currentimage++;
+            }
+
+            imageview.src = imagelist[currentimage];
+            filename.innerHTML = imagelist[currentimage];
+
+        }
+    </script>
+
+    <style>
+
+        .arrow {
+	        background-color:#44c767;
+	        border-radius:30px;
+	        border:1px solid #18ab29;
+	        display:inline-block;
+	        cursor:pointer;
+	        color:#ffffff;
+	        font-family:Arial;
+	        font-size:17px;
+	        padding:16px 20px;
+	        text-decoration:none;
+	        text-shadow:0px 1px 0px #2f6627;
+        }
+        .arrow:hover {
+	        background-color:#5cbf2a;
+        }
+        .arrow:active {
+	        position:relative;
+	        top:1px;
+        }
+
+        #downloadbtn {
+	        background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	        background-color:#44c767;
+	        border-radius:28px;
+	        border:1px solid #18ab29;
+	        display:inline-block;
+	        cursor:pointer;
+	        color:#ffffff;
+	        font-family:Arial;
+	        font-size:17px;
+	        padding:16px 31px;
+	        text-decoration:none;
+	        text-shadow:0px 1px 0px #2f6627;
+        }
+        #downloadbtn:hover {
+	        background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+	        background-color:#5cbf2a;
+        }
+        #downloadbtn:active {
+	        position:relative;
+	        top:1px;
+        }
+
+        #imageview {
+
+            vertical-align: middle;
+
+        }
+
+        #aleft {
+
+            display: inline-block;
+
+        }
+
+        #aright {
+
+            display: inline-block;
+
+        }
+
+        h1 {
+
+            font-family: "Lucida Console", "Courier New", monospace;
+
+        }
+
+
+    </style>
+</body>
+</html>
