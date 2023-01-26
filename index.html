@@ -8,7 +8,6 @@
 </head>
 <body>
     <script src="filesaver.js"></script>
-    <a href="javascript:changetheme()" id="themechange">dark</a>
     <center>
         <br><br>
             <h1 id="header">Free NFT Download</h1>
@@ -26,7 +25,6 @@
         var imageview = document.getElementById('imageview');
         var downloadbtn = document.getElementById('downloadbtn');
         var filename = document.getElementById('filename');
-        var themelink = document.getElementById('themechange');
         var header = document.getElementById('header');
         var currentimage = 0;
 
@@ -35,24 +33,6 @@
         imageview.src = imagelist[currentimage];
 
         filename.innerHTML = imagelist[currentimage];
-
-        if(document.cookie == ""){
-
-            document.cookie = 'lightmode';
-            themelink.innerHTML = 'Dark Mode';
-            currenttheme = document.cookie;
-
-        } if(document.cookie = 'lightmode'){
-
-            themelink.innerHTML = 'Dark Mode';
-            currenttheme = document.cookie;
-
-        } else if(document.cookie = 'darkmode'){
-
-            themelink.innerHTML = 'Light Mode';
-            currenttheme = document.cookie;
-
-        }
 
         function downloadimg(src,filename){
 
@@ -105,25 +85,6 @@
 
             imageview.src = imagelist[currentimage];
             filename.innerHTML = imagelist[currentimage];
-
-        }
-
-        function changetheme(){
-            if(currenttheme == 'lighttheme'){
-                document.body.style.backgroundColor = 'black';
-                filename.style.color = 'white';
-                header.style.color = 'white';
-                themelink.innerHTML = 'Light Mode';
-                document.cookie = 'darktheme';
-            } else if(currenttheme == 'darktheme'){
-
-                document.body.style.backgroundColor = 'white';
-                filename.style.color = 'black';
-                header.style.color = 'black';
-                themelink.innerHTML = 'Dark Mode';
-                document.cookie = 'lighttheme';
-
-            }
 
         }
     </script>
