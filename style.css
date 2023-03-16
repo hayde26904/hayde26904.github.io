@@ -1,0 +1,282 @@
+body {
+
+    /* background-image: url(images/coolbackground1.png); */
+    /* background-image: linear-gradient(to right, #000, #222, #333); */
+    background-image: radial-gradient(#444,#222,#000);
+    background-size: cover;
+
+    height: auto;
+
+
+}
+
+.project-container {
+
+    display: flex;
+    border: 3px solid #000;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px #AAA;
+
+}
+
+.project-title {
+
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
+
+}
+
+
+.project-description {
+
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+
+    margin-left: 10px;
+    margin-right: 5px;
+    text-align: left;
+
+
+}
+
+
+.project-img {
+
+    width: 200px;
+    height: 200px;
+    /* border-image: linear-gradient(to right, red, blue) 1; */
+    /* border-width: 10px; */
+    /* border-style: solid; */
+    border: #000 solid 4px;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px #AAA;
+
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+
+}
+
+#main-container {
+
+    background-color: #FFF;
+    width: 900px;
+    border-radius: 10px;
+    margin-top: -95px;
+
+}
+
+#main-content {
+
+    width: 600px;
+
+}
+
+.main-title {
+    font-family: 'Space Mono', monospace;
+    font-family: 'Tilt Neon', cursive;
+    font-size: 50px;
+
+}
+
+.main-paragraph {
+
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
+
+}
+
+#ytechlogo {
+
+    width: 300px;
+    height: 300px;
+    box-shadow: 10px 5px 5px #AAA;
+
+}
+
+header {
+
+    position: sticky;
+    position: -webkit-sticky;
+    background-image: linear-gradient(315deg, red, blue);
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    transform: translate(-6px, 0px);
+
+    font-family: 'Space Mono', monospace;
+    font-family: 'Tilt Warp', cursive;
+
+    border-radius: 10px;
+
+    margin-left: 5px;
+
+}
+
+#header-title {
+    font-size: 4vw;
+    color: #FFF;
+    margin-top: auto;
+
+
+}
+
+#header-btns {
+
+    margin-top: -15px;
+
+}
+
+.header-btn {
+    font-size: 15px;
+    font-family: Arial;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 45px;
+    border-width: 1px;
+    color: #666666;
+    border-color: #dcdcdc;
+    font-weight: bold;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 5px 5px 3px rgba(30,30,30,0.5);
+    text-shadow: inset 0px 1px 0px #ffffff;
+    background: #ffffff;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+.header-btn:hover {
+    background: #f6f6f6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+
+    body {
+
+        background-image: linear-gradient(to right,#111,#222,#333);
+
+    }
+
+    .project-container {
+
+        display: block;
+        text-align: center;
+
+    }
+
+    .project-title {
+
+        font-size: 5vw;
+
+    }
+
+    .project-description {
+
+        font-size: 3vw;
+        margin-left: 0px;
+        margin-top: 20px;
+        text-align: center;
+
+    }
+
+    .project-img {
+
+        width: 45vw;
+        height: 45vw;
+        margin-left: 0px;
+        margin-top: 10px;
+
+    }
+
+    #main-container {
+
+        width: 90%;
+        height: auto;
+
+        position: absolute;
+
+        left: 5%;
+        top: 250px;
+
+    }
+
+    #main-content {
+
+        width: 85%;
+        height: auto;
+
+    }
+
+    #ytechlogo {
+
+        width: 45%;
+        height: 45%;
+
+    }
+
+    .main-title {
+
+        font-size: 7vw;
+
+    }
+
+    .main-paragraph {
+
+        font-size: 4vw;
+
+    }
+
+    header {
+
+        z-index: 1;
+
+    }
+
+    #header-title {
+
+        font-size: 3.2vw;
+        margin-top: 37px;
+
+    }
+
+    #header-btns {
+
+        margin-top: -1%;
+
+    }
+
+    .header-btn {
+        font-size: 10px;
+        font-family: Arial;
+        width: fit-content;
+        padding-right: .5vw;
+        padding-left: .5vw;
+        height: 5vw;
+        border-width: 1px;
+        color: #666666;
+        border-color: #dcdcdc;
+        font-weight: bold;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        box-shadow: 5px 5px 3px rgba(30,30,30,0.5);
+        text-shadow: inset 0px 1px 0px #ffffff;
+        background: #ffffff;
+        margin-left: 1vw;
+        margin-top: 40px;
+    }
+
+    .header-btn:hover {
+        background: #f6f6f6;
+        cursor: pointer;
+    }
+
+}

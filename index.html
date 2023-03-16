@@ -1,165 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hayden's Portfolio - Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Tilt+Warp&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Tilt+Neon&family=Tilt+Warp&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="filesaver.js"></script>
-    <a href="gettoschool4/www/index.html">Click here to play the highly anticipated sequel to Get To School 3</a>
+    <header>
+        <h1 id="header-title">Hayden's Awesome Portfolio</h1>
+        <div id="header-btns">
+            <a href="index.html"><button class="header-btn">&nbsp;Home&nbsp;</button></a>
+            <a href="projects.html"><button class="header-btn">Projects</button></a>
+            <a href="contact.html"><button class="header-btn">Contact</button></a>
+        </div>
+    </header>
+    <br><br><br><br><br><br><br>
     <center>
-        <br><br>
-            <h1 id="header">Free NFT Download</h1>
-            <br><br><br><br>
-            <p id="filename"></p>
-            <button class="arrow" id='aleft' onClick="limg()">⬅</button>&nbsp;&nbsp;&nbsp;
-            <img id="imageview" width="300px" height="200px">
-            &nbsp;&nbsp;&nbsp;<button class="arrow" id='aright' onClick="rimg()">➡</button>
-            <br><br><br>
-            <button id='downloadbtn' onclick="downloadimg(imagelist[currentimage],'NFTDOWNLOAD.'+imagelist[currentimage].split('.').slice(-1))">DOWNLOAD&nbsp;&nbsp;&nbsp;<b>⬇</b></button>
+        <div id="main-container">
+            <div id="main-content">
+                <br><br>
+                <h1 class="main-title">Welcome to my portfolio!</h1>
+                <img src="images/ytechlogo.png" id="ytechlogo">
+                <br><br>
+                <p class="main-paragraph">As you may be able to tell, this is a very cool and awesome portfolio for all
+                    the work I've done
+                    in
+                    Programming while attending York County School of Technology.</p>
+                <br><br>
+            </div>
+        </div>
     </center>
-
-    <script>
-        var imagelist = ['images/mogus1.jfif','images/fortniteamongus.jfif','images/gruisamongus.jfif','images/gruamongushappymeal.jpg','images/thomastheamongus.jpg'];
-        var imageview = document.getElementById('imageview');
-        var downloadbtn = document.getElementById('downloadbtn');
-        var filename = document.getElementById('filename');
-        var themelink = document.getElementById('themechange');
-        var header = document.getElementById('header');
-        var currentimage = 0;
-
-        imageview.src = imagelist[currentimage];
-
-        filename.innerHTML = imagelist[currentimage];
-
-        function downloadimg(src,filename){
-
-            var image = new Image(); 
-            image.crossOrigin = "anonymous"; 
-            image.src = src; 
- 
-            document.body.append(image); 
-            image.onload = () => { 
-            var canvas = document.createElement("canvas"); 
-            canvas.width = image.width; 
-            canvas.height = image.height; 
-            canvas.getContext("2d").drawImage(image, 0, 0); 
- 
-            var blob;
-            blob = canvas.toDataURL("image/jpeg"); 
- 
-            var a = document.createElement("a"); 
-            a.href = blob; 
-            a.download = filename; 
-            document.body.appendChild(a); 
-            a.click(); 
-            document.body.removeChild(a); 
-            }; 
-            document.body.removeChild(image); 
-
-        }
-
-        function limg(){
-
-            if(currentimage == 0){ 
-                currentimage = imagelist.length-1 
-            } else {
-                currentimage--;
-            }
-
-            imageview.src = imagelist[currentimage];
-            filename.innerHTML = imagelist[currentimage];
-
-
-        }
-
-        function rimg(){
-
-            if(currentimage == imagelist.length-1){ 
-                currentimage = 0; 
-            } else {
-                currentimage++;
-            }
-
-            imageview.src = imagelist[currentimage];
-            filename.innerHTML = imagelist[currentimage];
-
-        }
-    </script>
-
-    <style>
-
-        .arrow {
-	        background-color:#44c767;
-	        border-radius:30px;
-	        border:1px solid #18ab29;
-	        display:inline-block;
-	        cursor:pointer;
-	        color:#ffffff;
-	        font-family:Arial;
-	        font-size:17px;
-	        padding:16px 20px;
-	        text-decoration:none;
-	        text-shadow:0px 1px 0px #2f6627;
-        }
-        .arrow:hover {
-	        background-color:#5cbf2a;
-        }
-        .arrow:active {
-	        position:relative;
-	        top:1px;
-        }
-
-        #downloadbtn {
-	        background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
-	        background-color:#44c767;
-	        border-radius:28px;
-	        border:1px solid #18ab29;
-	        display:inline-block;
-	        cursor:pointer;
-	        color:#ffffff;
-	        font-family:Arial;
-	        font-size:17px;
-	        padding:16px 31px;
-	        text-decoration:none;
-	        text-shadow:0px 1px 0px #2f6627;
-        }
-        #downloadbtn:hover {
-	        background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
-	        background-color:#5cbf2a;
-        }
-        #downloadbtn:active {
-	        position:relative;
-	        top:1px;
-        }
-
-        #imageview {
-
-            vertical-align: middle;
-
-        }
-
-        #aleft {
-
-            display: inline-block;
-
-        }
-
-        #aright {
-
-            display: inline-block;
-
-        }
-
-        h1 {
-
-            font-family: "Lucida Console", "Courier New", monospace;
-
-        }
-
-
-    </style>
 </body>
+
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>he is watching</h1>
+    <p>I've been under my bed for 8 days...</p>
+    <bold>watching...</bold>
+    <bold>and waiting...</bold>
+    <div id="linkstuff">
+    <p id="gamelink" onclick="alert('baws')"><u>Anyway, you should play this cool game I'm making</u></p>
+    </div>
+
+    <script>
+
+        var gamelinkdiv = document.getElementById('linkstuff');
+        gamelinkdiv.style.left = window.innerWidth / 3 + 'px';
+        gamelinkdiv.style.top = window.innerHeight / 3 + 'px';
+
+        gamelinkdiv.style.width = '340px';
+        gamelinkdiv.style.height = '20px';
+
+        var linkX = Number(gamelinkdiv.style.left.split('px')[0]);
+        var linkY = Number(gamelinkdiv.style.top.split('px')[0]);
+
+        var linkinitialX = linkX;
+        var linkinitialY = linkY;
+
+        var linkWidth = Number(gamelinkdiv.style.width.split('px')[0]);
+        var linkHeight = Number(gamelinkdiv.style.height.split('px')[0]);
+
+        var mouseoffset = 250;
+
+        var thingactivate = false;
+
+        var mouseX;
+
+        var mouseY;
+
+        var speed = 10;
+
+        var xv = 0;
+        var yv = 0;
+
+        var activation = false;
+
+        var angle;
+
+        document.addEventListener('mousemove', function (event) {
+
+            /*if(event.clientY > window.innerHeight/2){
+
+                mouseX = event.clientX-mouseoffset;
+                mouseY = event.clientY+mouseoffset;
+
+            } else if (event.clientY < window.innerHeight/2){
+                
+                //mouseY = event.clientY-mouseoffset;
+                //mouseX = event.clientX+mouseoffset;
+
+            }*/
+
+            if (event.clientX < window.innerWidth/4 && event.clientY < window.innerHeight/4){
+
+                mouseX = event.clientX-mouseoffset;
+                mouseY = event.clientY-mouseoffset;
+
+            } else if (event.clientX > window.innerWidth/4 && event.clientY < window.innerHeight/4){
+
+                mouseX = event.clientX+linkWidth+mouseoffset;
+                mouseY = event.clientY-mouseoffset;
+
+            } else if (event.clientX < window.innerWidth/4 && event.clientY > window.innerHeight/4){
+
+                mouseX = event.clientX-mouseoffset;
+                mouseY = event.clientY+linkHeight+mouseoffset;
+
+            } else if (event.clientX > window.innerWidth/4 && event.clientY > window.innerHeight/4){
+
+                mouseX = event.clientX+mouseoffset;
+                mouseY = event.clientY+linkHeight+mouseoffset;
+
+            }
+
+            if (!activation && event.clientX < linkX + linkWidth + 50 && event.clientX > linkX - 50 && event.clientY > linkY - 50 && event.clientY < linkY + linkHeight + 50) {
+
+                activation = true;
+                setInterval(update, 0);
+            }
+
+        });
+
+        function update() {
+
+            gamelinkdiv.style.left = linkX + 'px';
+            gamelinkdiv.style.top = linkY + 'px';
+
+            angle = Math.atan2(mouseY - linkY, mouseX - linkX) * 180 / Math.PI;
+
+            xv = Math.cos(this.angle * Math.PI / 180) * speed;
+            yv = Math.sin(this.angle * Math.PI / 180) * speed;
+
+            linkX-=xv;
+            linkY-=yv;
+
+            if (linkX <= 0) {
+
+                linkX = 0;
+
+            }
+
+            if (linkX + linkWidth >= window.innerWidth) {
+
+                linkX = window.innerWidth - linkWidth;
+
+            }
+
+            if (linkY <= 0) {
+
+                linkY = 0;
+
+            }
+
+            if (linkY + linkHeight >= window.innerHeight) {
+
+                linkY = window.innerHeight - linkHeight;
+
+            }
+
+        }
+
+
+    </script>
+
+    <style>
+
+        #linkstuff {
+            position: absolute;
+            transform-origin: center;
+            transition: transform 0.3s linear;
+            transform-style: preserve-3D;
+
+        }
+
+        /*#linkstuff:hover {
+
+            transform: rotate(-90deg);
+
+        }*/
+
+        #gamelink {
+
+            color: #0000EE;
+
+        }
+
+        #gamelink:hover {
+
+            cursor: pointer;
+
+        }
+
+        body {}
+    </style>
+</body>
+
+</html>
