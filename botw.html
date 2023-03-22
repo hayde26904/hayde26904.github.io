@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        canvas {
+
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            left: 0px;
+            top: 0px;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <babylon model="link.glb" ></babylon>
+    <script>
+
+        const canvas = document.getElementById('canvas');
+
+        const engine = new BABYLON.Engine(canvas, true);
+
+        var x = 0;
+        var z = -5;
+
+
+        function createScene(){
+
+            const scene = new BABYLON.Scene(engine);
+
+            const camera = new BABYLON.FreeCamera('camera', new BABYLON.Vector3(x, 0, z));
+            const light = new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0,1,0), scene);
+
+            BABYLON.SceneLoader.ImportMeshAsync("link", "images/","link.glb");
+
+            return scene;
+
+        }
+
+        const scene = createScene();
+
+        var camera = scene.getCameraByName('camera');
+
+        engine.runRenderLoop(() => {
+
+            scene.render();
+
+        });
+
+
+    </script>
+</body>
+
+</html>
