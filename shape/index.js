@@ -180,11 +180,11 @@ function update() {
             powerupText = powerup.name + " " + Math.round(powerup.expireTime / 10);
             powerupX = stage.canvas.width - (powerupText.length * 25);
             powerupY = 100 + (p) * 100;
-            if (powerup.expireTime < powerup.expireTimeOG / 4 && powerup.expires) {
+            /*if (powerup.expireTime < powerup.expireTimeOG / 4 && powerup.expires) {
                 stage.fillStyle = Math.random() * 100 <= 60 ? '#ff0000' : 'rgba(0,0,0,0)';
             } else {
                 stage.fillStyle = '#000';
-            }
+            }*/
 
             if (!player.dead) {
                 stage.fillText(powerupText, powerupX - (powerupText.length * 20), powerupY);
