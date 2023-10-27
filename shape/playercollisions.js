@@ -23,6 +23,7 @@ function testPlayerCollisions(currentChunk) {
         if (currentChunk.blocks[topBlockIndex].type == 'bounce') {
             player.y = currentChunk.blocks[topBlockIndex].y - player.h;
             player.yv = -player.yv * currentChunk.blocks[topBlockIndex].bounceHeight;
+            player.onGround = false;
         }
     }
 
@@ -38,7 +39,7 @@ function testPlayerCollisions(currentChunk) {
         if (currentChunk.blocks[bottomBlockIndex].type == 'bounce') {
             player.y = currentChunk.blocks[bottomBlockIndex].y + currentChunk.blocks[bottomBlockIndex].h;
             player.yv = -player.yv * currentChunk.blocks[bottomBlockIndex].bounceHeight;
-            console.log('bounce');
+            player.onGround = false;
         }
 
         if (currentChunk.blocks[bottomBlockIndex].type == 'spike') {
@@ -69,6 +70,21 @@ function testPlayerCollisions(currentChunk) {
     if (player.gravityDir == 1) player.nojump = blocks.some(block => block.y == player.y - player.h && player.x + player.w >= block.x && player.x <= block.x + block.w); // Disable jumping if there is a block directly above the player
     if (player.gravityDIr == -1) player.nojump = blocks.some(block => block.y == player.y + player.h && player.x + player.w >= block.x && player.x <= block.x + block.w)
 
+    //SHIELD COLLISION
+    if (player.shield) {
+        var shieldBlockIndex = currentChunk.blocks.findIndex(block => player.shieldCollision(block));
+        if (shieldBlockIndex !== -1) {
+
+            explode(15, currentChunk.blocks[shieldBlockIndex], globalGravity);
+            currentChunk.blocks.splice(shieldBlockIndex, 1);
+            var sh = player.activePowerups[player.activePowerups.findIndex(sh => sh.type == 'shield')]
+            sh.uses--;
+            //shakeScreen(100)
+            screenShake = true;
+
+        }
+    }
+
     //POWERUP COLLISION
 
     chunkPowerups = currentChunk.powerups;
@@ -80,7 +96,7 @@ function testPlayerCollisions(currentChunk) {
         var powerupName = powerup.name;
         var playerHasPowerup = false;
 
-        if(!player.hasPowerup(powerupType)){
+        if (!player.hasPowerup(powerupType)) {
             player.activePowerups.push(powerup);
             labels.push(new Label(powerupName, player.x, player.y, 25, '', true));
             eval("player." + powerupType + " = true;");
@@ -93,10 +109,10 @@ function testPlayerCollisions(currentChunk) {
     chunkPogs = currentChunk.pogs;
     pogIndex = chunkPogs.findIndex(pog => collision(pog, player));
 
-    if(pogIndex !== -1){
+    if (pogIndex !== -1) {
         points = 500;
-        score+=points;
-        labels.push(new Label('+'+String(points), player.x, player.y, 15, '#000', false));
+        score += points;
+        labels.push(new Label('+' + String(points), player.x, player.y, 15, '#000', false));
         chunkPogs.splice(pogIndex, 1);
     }
 }

@@ -38,6 +38,11 @@ class Player {
 
         this.currentBlock;
 
+        this.shieldX = this.x + this.w * 1.1;
+        this.shieldY = this.y;
+        this.shieldW = 10;
+        this.shieldH = this.h;
+
     }
 
     draw() {
@@ -53,7 +58,7 @@ class Player {
             var b = Math.round(Math.random() * 255);
 
             stage.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
-            stage.fillRect(this.x + this.w * 1.1, this.y - 5, 10, this.h + 10);
+            stage.fillRect(this.shieldX, this.y-10, this.shieldW, this.h+20);
 
         }
 
@@ -83,9 +88,16 @@ class Player {
             if(this.activePowerups[p].expireTime <= 0 || this.activePowerups[p].uses == 0){
                 eval("player." + this.activePowerups[p].type + " = false;");
                 this.activePowerups.splice(p,1);
+            } else {
+                this.activePowerups[p].update();
             }
 
         }
+
+        this.shieldX = this.x + this.w * 1.5;
+        this.shieldY = this.y+10;
+        this.shieldW = 10;
+        this.shieldH = this.h/2;
 
     }
 
@@ -114,6 +126,18 @@ class Player {
             this.yv = -this.jumpheight * this.gravityDir;
             this.jumps = this.doublejump ? this.jumps + 0.5 : this.jumps + 1;
         }
+    }
+
+    shieldCollision(block){
+        if (
+            this.shieldX >= block.x && this.shieldX+this.shieldH <= block.x+block.w && this.shieldY >= block.y && this.shieldY+this.shieldH <= block.y+block.h
+          ) {
+            // Collision detected!
+            return true;
+          } else {
+            // No collision
+            return false;
+          }
     }
 
 }

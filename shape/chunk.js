@@ -50,7 +50,7 @@ class Chunk {
     
                 } else if(this.chunk[i][j] == 5 && Math.random()*100 < this.doubleJumpChance){
     
-                    this.powerups.push(new Powerup(this.x+this.blockSize/13, this.y, this.blockSize/1.1, this.blockSize/1.1, "doublejump", "Double Jump", false, 600, 10));
+                    this.powerups.push(new Powerup(this.x+this.blockSize/13, this.y, this.blockSize/1.1, this.blockSize/1.1, "doublejump", "Double Jump", false, 600, 3));
                 
                 } else if(this.chunk[i][j] == 6 && Math.random()*100 < this.shieldChance){
                     
@@ -86,8 +86,6 @@ class Chunk {
         for(let powerup = 0; powerup < this.powerups.length; powerup++){
             if(!this.powerups[powerup].collected){
                 this.powerups[powerup].draw();
-            } else {
-                this.powerups[powerup].update();
             }
         }
 

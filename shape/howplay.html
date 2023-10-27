@@ -10,28 +10,20 @@
 <body>
     <center>
         <div id="titlescreen">
-            <h1 class="titletext">SHAPES THAT GO!</h1>
-            <h3 class="cooltext" id="highscoretext">HIGHSCORE: </h3>
-            <br><br><br><br><br><br><br><br><br><br><br>
+            <h1 class="titletext">CONTROLS</h1>
+            <br><br><br><br><br><br>
+            <h2 class="cooltext">SPACE:&nbsp;&nbsp;JUMP</h2>
+            <br>
+            <h2 class="cooltext">&nbsp;&nbsp;&nbsp;F:&nbsp;&nbsp;FLIP GRAVITY</h2>
+            <br><br><br><br><br><br>
             <a href="game.html">
                 <h2 class="option">PLAY</h2>
             </a>
-            <a href="howplay.html">
-                <h2 class="option">HOW PLAY?</h2>
-            </a>
-            <a href="credits.html">
-                <h2 class="option">CREDITS</h2>
+            <a href="index.html">
+                <h2 class="option">BACK</h2>
             </a>
         </div>
     </center>
-
-    <script src="cookies.js"></script>
-    <script>
-
-        document.getElementById('highscoretext').innerHTML = "HIGHSCORE: &nbsp;&nbsp;" + getCookie("highscore");
-
-    </script>
-
     <style>
         @font-face {
             font-family: CoolFont;
@@ -46,37 +38,22 @@
             height: 100%;
             background-repeat: no-repeat;
             background-size: cover;
-            background-image: url("images/newtitle.png");
-            /*animation: translate 15s infinite linear;*/
+            background-image: url("images/sadness.png");
         }
 
         .cooltext {
             font-family: CoolFont;
             user-select: none;
-            font-size: 1vw;
         }
 
         a:link {
             text-decoration: none !important;
         }
 
-        @keyframes upDown {
-            to {
-                transform: translatey(10px);
-            }
-        }
-
-        @keyframes translate {
-            to {
-                transform: translatex(900%);
-            }
-        }
-
         .titletext {
             font-family: CoolFont;
             font-size: 2.5vw;
             user-select: none;
-            animation: upDown 0.5s alternate infinite ease-in-out;
         }
 
         .option {

@@ -84,6 +84,16 @@ var gravImgs = {
 
 var gravArrow = new Image();
 
+let gamepadIndex;
+let gamepadConnected;
+let gamepad;
+window.addEventListener('gamepadconnected', (event) => {
+	gamepadIndex = event.gamepad.index;
+    gamepad = event.gamepad;
+    gamepadConnected = true;
+    labels.push(new Label("GAMEPAD CONNECTED", stage.canvas.width / 4, stage.canvas.height / 2.5, 75, '', true));
+});
+
 /*window.addEventListener("gamepadconnected", (e) => {
     console.log(
       "Gamepad connected at index %d: %s. %d buttons, %d axes.",
@@ -92,8 +102,18 @@ var gravArrow = new Image();
       e.gamepad.buttons.length,
       e.gamepad.axes.length,
     );
-  });*/
+    labels.push(new Label("GAMEPAD CONNECTED", stage.canvas.width / 4, stage.canvas.height / 2.5, 75, '', true));
+    window.gpConnected = true;
+    window.gp = e.gamepad;
+});*/
 
+function buttonPressed(b) {
+    if (typeof gamepad == 'object') {
+      return gamepad.buttons[b].pressed;
+    } else {
+        return false;
+    }
+}
 
 player.currentBlock = new Block(-500, -500, 0, 0, '#000', 0); // makes game not crash on startup
 
@@ -122,8 +142,8 @@ function update() {
 
     gameTime++;
 
-    globalScrollSpd = Math.round(scrollSpd + (gameTime / 500)); //Make scrollspeed speed up longer you play
-    console.log(globalScrollSpd);
+    globalScrollSpd = Math.round(scrollSpd + (gameTime / 1000)); //Make scrollspeed speed up longer you play
+    console.log(chunks.length)
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
     var chunkLeftSideX = latestChunk.chunkX;
@@ -136,7 +156,6 @@ function update() {
         for (block = 0; block < chunks[chunk].blocks.length; block++) {
             if (chunks[chunk].blocks[block].x <= -200) {
                 chunks[chunk].blocks.splice(block, 1);
-                console.log('has delete block yo mista white');
             }
         }
     }
@@ -168,6 +187,7 @@ function update() {
 
     stage.fillStyle = '#000';
     if (!player.dead) stage.fillText(score, scoreX, scoreY);
+    //stage.fillText(buttonPressed(0), scoreX, scoreY);
 
     //gravArrow.src = gravImgs[String(player.gravityDir)];
 
@@ -198,11 +218,15 @@ function update() {
 
     }
 
-    /*var outChunk = chunks.findIndex(chunk => chunk.blocks[0].x + chunk.w <= 0);
+    try {
+        var outChunk = chunks.findIndex(chunk => chunk.blocks[0].x + chunk.w <= 0);
+    } catch {
+        console.log("EH I'M ERRORING HERE!");
+    }
 
     if(outChunk !== -1){
         chunks.splice(outChunk, 1);
-    }*/
+    }
 
     for (p = 0; p < particles.length; p++) {
         particles[p].draw();
