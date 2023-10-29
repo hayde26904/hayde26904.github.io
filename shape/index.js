@@ -11,7 +11,7 @@ const scrollSpd = Math.round(stage.canvas.width / 65);
 //const scrollSpd = Math.round(stage.canvas.width / 75);
 var globalScrollSpd = scrollSpd;
 //const globalScrollSpd = 0;
-const globalGravity = 4;
+const globalGravity = 4.3;
 //const globalGravity = 0;
 //const globalGravity = 3;
 
