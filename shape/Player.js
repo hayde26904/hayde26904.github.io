@@ -75,9 +75,9 @@ class Player {
 
         this.yv += this.gravity * this.gravityDir;
 
-        this.x += this.xv * this.spd * dt;
+        this.x += this.xv * this.spd;
 
-        if (!this.dead) this.y += this.yv * dt;
+        if (!this.dead) this.y += this.yv;
 
     }
 
