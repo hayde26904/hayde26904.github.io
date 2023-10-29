@@ -7,7 +7,7 @@ stage.imageSmoothingEnabled = false;
 var screenShake = false;
 var shakeAmount = 15;
 
-const scrollSpd = Math.round(stage.canvas.width / 70);
+const scrollSpd = Math.round(stage.canvas.width / 65);
 //const scrollSpd = Math.round(stage.canvas.width / 75);
 var globalScrollSpd = scrollSpd;
 //const globalScrollSpd = 0;
@@ -122,10 +122,16 @@ var lastLevel = 0;
 player.currentChunk = chunks[0];
 var latestChunk = chunks[0];
 
+var deltaTime = 0;
+var lastTimestamp = 0;
+
 chunks[0].create();
 
 //console.log(player.currentBlock);
-function update() {
+function update(timestamp) {
+
+    var deltaTime = (timestamp - lastTimestamp)/15;
+
     stage.canvas.width = window.innerWidth;
     stage.canvas.height = window.innerHeight;
     stage.clearRect(0, 0, stage.canvas.width, stage.canvas.height);
@@ -142,7 +148,7 @@ function update() {
 
     gameTime++;
 
-    globalScrollSpd = Math.round(scrollSpd + (gameTime / 1000)); //Make scrollspeed speed up longer you play
+    globalScrollSpd = Math.floor((scrollSpd + (gameTime / 1000))*deltaTime); //Make scrollspeed speed up longer you play
     console.log(chunks.length)
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
@@ -256,7 +262,7 @@ function update() {
 
     if (!player.dead) {
         player.draw();
-        player.physics();
+        player.physics(deltaTime);
         player.update();
         scoreCD--;
 
@@ -302,7 +308,7 @@ function update() {
         scoreCD = scoreCoolDown;
     }
 
-
+    lastTimestamp = timestamp;
     requestAnimationFrame(update);
 
 }

@@ -64,7 +64,7 @@ class Player {
 
     }
 
-    physics() {
+    physics(dt) {
 
         var min = this.gravityDir == 1 ? -60 : -25;
         var max = this.gravityDir == 1 ? 25 : 60;    
@@ -75,9 +75,9 @@ class Player {
 
         this.yv += this.gravity * this.gravityDir;
 
-        this.x += this.xv * this.spd;
+        this.x += this.xv * this.spd * dt;
 
-        if (!this.dead) this.y += this.yv;
+        if (!this.dead) this.y += this.yv * dt;
 
     }
 

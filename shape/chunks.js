@@ -218,7 +218,7 @@ chunk15 = [
 ];
 
 chunk16 = [
-    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -304,4 +304,4 @@ bonus = [
 //var levels = [startingChunk,chunk2,chunk3,chunk4,chunk5,chunk6,chunk7,chunk8,chunk9,chunk10,chunk11,chunk12,chunk13,chunk14,chunk15];
 var levels = [chunk2,chunk2,chunk3,chunk4,chunk5,chunk6,chunk7,chunk8,chunk9,chunk10, chunk11,chunk12,chunk13, chunk14, chunk15, chunk16];
 //var levels = [chunk2,chunk3,chunk4,chunk5,chunk6,chunk7,chunk8,chunk9, chunk10];
-//var levels = [chunk2,chunk2,chunk2];
+//var levels = [chunk11,chunk11,chunk11];
