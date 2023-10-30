@@ -11,7 +11,7 @@ const scrollSpd = Math.round(stage.canvas.width / 65);
 //const scrollSpd = Math.round(stage.canvas.width / 75);
 var globalScrollSpd = scrollSpd;
 //const globalScrollSpd = 0;
-const globalGravity = 4.3;
+const globalGravity = 5;
 //const globalGravity = 0;
 //const globalGravity = 3;
 
@@ -21,7 +21,7 @@ var blockSize = Math.round(stage.canvas.height / levels[0].length);
 
 var chunks = [new Chunk(startingChunk, 0, 0, blockSize)]
 
-var player = new Player(stage.canvas.width / 4, 300, blockSize, blockSize, 'red', globalGravity, blockSize / 2.1);
+var player = new Player(stage.canvas.width / 4, 300, blockSize, blockSize, 'red', globalGravity, blockSize / 2);
 
 var blocks = [];
 
@@ -148,7 +148,7 @@ function update(timestamp) {
 
     gameTime++;
 
-    globalScrollSpd = Math.floor((scrollSpd + (gameTime / 1000))*deltaTime); //Make scrollspeed speed up longer you play
+    globalScrollSpd = Math.floor((scrollSpd + (gameTime / 1000))); //Make scrollspeed speed up longer you play
     console.log(chunks.length)
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
