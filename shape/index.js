@@ -325,7 +325,7 @@ document.addEventListener('keydown', function (event) {
 
     }
 
-    if (event.key == 'f' && player.onGround) {
+    if ((event.key == 'f' || event.key == 'F') && player.onGround) {
 
         player.gravityDir = -player.gravityDir;
         player.onGround = false;
