@@ -169,7 +169,7 @@ function update(timestamp) {
     if (chunkRightSideX <= stage.canvas.width + blockSize * 3) { // Spawns new chunk after the currentChunk
         var randomLevel = Math.round(Math.random() * levels.length) - 1;
         randomLevel = randomLevel <= 0 ? 1 : randomLevel;
-        if (randomLevel == lastLevel) randomLevel = lastLevel === 0 ? randomLevel + 1 : randomLevel - 1;
+        //if (randomLevel == lastLevel) randomLevel = lastLevel === 0 ? randomLevel + 1 : randomLevel - 1;
         console.log("Last: " + lastLevel + "   Random: " + randomLevel);
         lastLevel = randomLevel;
         chunksTillBonus--;
