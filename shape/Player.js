@@ -95,10 +95,10 @@ class Player {
 
         }
 
-        this.shieldX = this.x + this.w*1.5;
-        this.shieldY = this.y+this.h/8;
+        this.shieldX = this.x + this.w * 1.4;
+        this.shieldY = this.y+this.h/3;
         this.shieldW = 10;
-        this.shieldH = this.h/1.8;
+        this.shieldH = this.h/5;
 
     }
 

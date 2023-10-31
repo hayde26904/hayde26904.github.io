@@ -50,17 +50,17 @@ function testPlayerCollisions(currentChunk) {
     //Testing if the player hits a block on it's side
 
     if (sideBlockIndex !== -1) {
-        /*if (player.shield) {
+        if (player.shield) {
             explode(15, currentChunk.blocks[sideBlockIndex], globalGravity);
             currentChunk.blocks.splice(sideBlockIndex, 1);
             var sh = player.activePowerups[player.activePowerups.findIndex(sh => sh.type == 'shield')]
             sh.uses--;
             //shakeScreen(100)
             screenShake = true;
-        } else {*/
+        } else {
             player.onGround = true;
             player.dead = true;
-        //}
+        }
     } else {
 
         screenShake = false;
