@@ -54,7 +54,7 @@ class Chunk {
                 
                 } else if(this.chunk[i][j] == 6 && Math.random()*100 < this.shieldChance){
                     
-                    this.powerups.push(new Powerup(this.x+this.blockSize/13, this.y, this.blockSize/1.1, this.blockSize/1.1, "shield", "Shield", false, 600, 50));
+                    this.powerups.push(new Powerup(this.x+this.blockSize/13, this.y, this.blockSize/1.1, this.blockSize/1.1, "shield", "Shield", true, 1000, 100));
 
                 } else if(this.chunk[i][j] == 8 && Math.random()*100 < this.magnetChance){
 
