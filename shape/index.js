@@ -15,7 +15,7 @@ const globalGravity = 5;
 var blockSize = Math.round(stage.canvas.height / levels[0].length);
 //const blockSize = Math.round(stage.canvas.width/22.95);
 
-const scrollSpd = blockSize/3;
+const scrollSpd = blockSize/3.2;
 //const scrollSpd = Math.round(stage.canvas.width / 75);
 var globalScrollSpd = scrollSpd;
 
@@ -151,6 +151,8 @@ function update(timestamp) {
     gameTime++;
 
     globalScrollSpd = Math.floor((scrollSpd + (gameTime/1000))); //Make scrollspeed speed up longer you play
+    
+    globalScrollSpd = globalScrollSpd * deltaTime;
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
     var chunkLeftSideX = latestChunk.chunkX;
