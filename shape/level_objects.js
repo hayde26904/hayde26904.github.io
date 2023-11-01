@@ -147,7 +147,7 @@ class Powerup {
         if(this.expires){
             this.expireTime--;
         }
-        console.log('update');
+        //console.log('update');
         
     }
 

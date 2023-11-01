@@ -29,7 +29,7 @@ function testPlayerCollisions(currentChunk) {
 
     //Testing for player's head colliding with the bottom of a block.
     if (bottomBlockIndex !== -1) {
-        console.log(currentChunk.blocks[bottomBlockIndex].type);
+        //console.log(currentChunk.blocks[bottomBlockIndex].type);
         if (currentChunk.blocks[bottomBlockIndex].type == 'block') {
             player.y = currentChunk.blocks[bottomBlockIndex].y + currentChunk.blocks[bottomBlockIndex].h;
             player.yv = 0;

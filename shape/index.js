@@ -127,7 +127,9 @@ var lastTimestamp = 0;
 
 chunks[0].create();
 
-//console.log(player.currentBlock);
+console.log("Don't even think about it")
+console.log("%cI will devour your flesh", 'font-weight: bold; color: red')
+
 function update(timestamp) {
 
     var deltaTime = (timestamp - lastTimestamp)/15;
@@ -149,7 +151,6 @@ function update(timestamp) {
     gameTime++;
 
     globalScrollSpd = Math.floor((scrollSpd + (gameTime/1000))); //Make scrollspeed speed up longer you play
-    console.log(chunks.length)
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
     var chunkLeftSideX = latestChunk.chunkX;
@@ -170,7 +171,7 @@ function update(timestamp) {
         var randomLevel = Math.round(Math.random() * levels.length) - 1;
         randomLevel = randomLevel <= 0 ? 1 : randomLevel;
         //if (randomLevel == lastLevel) randomLevel = lastLevel === 0 ? randomLevel + 1 : randomLevel - 1;
-        console.log("Last: " + lastLevel + "   Random: " + randomLevel);
+        //console.log("Last: " + lastLevel + "   Random: " + randomLevel);
         lastLevel = randomLevel;
         chunksTillBonus--;
         isBonus = chunksTillBonus <= 0;
@@ -226,9 +227,7 @@ function update(timestamp) {
 
     try {
         var outChunk = chunks.findIndex(chunk => chunk.blocks[0].x + chunk.w <= 0);
-    } catch {
-        console.log("EH I'M ERRORING HERE!");
-    }
+    } catch {}
 
     if(outChunk !== -1){
         chunks.splice(outChunk, 1);
