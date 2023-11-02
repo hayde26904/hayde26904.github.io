@@ -59,6 +59,7 @@ class Player {
 
             stage.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
             stage.fillRect(this.shieldX, this.y-10, this.shieldW, this.h+20);
+            //stage.fillRect(this.shieldX, this.shieldY, this.shieldW, this.shieldH);
 
         }
 
@@ -94,10 +95,10 @@ class Player {
 
         }
 
-        this.shieldX = this.x + this.w * 1.5;
-        this.shieldY = this.y+10;
+        this.shieldX = this.x + this.w * 1.4;
+        this.shieldY = this.y+this.h/3;
         this.shieldW = 10;
-        this.shieldH = this.h/2;
+        this.shieldH = this.h/5;
 
     }
 
@@ -130,7 +131,7 @@ class Player {
 
     shieldCollision(block){
         if (
-            this.shieldX >= block.x && this.shieldX+this.shieldH <= block.x+block.w && this.shieldY >= block.y && this.shieldY+this.shieldH <= block.y+block.h
+            this.shieldX+this.shieldW >= block.x && this.shieldX <= block.x+block.w && this.shieldY+this.shieldH >= block.y && this.shieldY <= block.y+block.h
           ) {
             // Collision detected!
             return true;

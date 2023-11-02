@@ -6,12 +6,8 @@ stage.imageSmoothingEnabled = false;
 
 var screenShake = false;
 var shakeAmount = 15;
-
-const scrollSpd = Math.round(stage.canvas.width / 65);
-//const scrollSpd = Math.round(stage.canvas.width / 75);
-var globalScrollSpd = scrollSpd;
 //const globalScrollSpd = 0;
-const globalGravity = 4.3;
+const globalGravity = 5;
 //const globalGravity = 0;
 //const globalGravity = 3;
 
@@ -19,9 +15,13 @@ const globalGravity = 4.3;
 var blockSize = Math.round(stage.canvas.height / levels[0].length);
 //const blockSize = Math.round(stage.canvas.width/22.95);
 
+const scrollSpd = blockSize/3.2;
+//const scrollSpd = Math.round(stage.canvas.width / 75);
+var globalScrollSpd = scrollSpd;
+
 var chunks = [new Chunk(startingChunk, 0, 0, blockSize)]
 
-var player = new Player(stage.canvas.width / 4, 300, blockSize, blockSize, 'red', globalGravity, blockSize / 2.1);
+var player = new Player(stage.canvas.width / 4, 300, blockSize, blockSize, 'red', globalGravity, blockSize / 2);
 
 var blocks = [];
 
@@ -127,7 +127,9 @@ var lastTimestamp = 0;
 
 chunks[0].create();
 
-//console.log(player.currentBlock);
+console.log("Don't even think about it")
+console.log("%cI will devour your flesh", 'font-weight: bold; color: red')
+
 function update(timestamp) {
 
     var deltaTime = (timestamp - lastTimestamp)/15;
@@ -148,8 +150,9 @@ function update(timestamp) {
 
     gameTime++;
 
-    globalScrollSpd = Math.floor((scrollSpd + (gameTime / 1000))*deltaTime); //Make scrollspeed speed up longer you play
-    console.log(chunks.length)
+    globalScrollSpd = Math.floor((scrollSpd + (gameTime/1000))); //Make scrollspeed speed up longer you play
+    
+    globalScrollSpd = globalScrollSpd * deltaTime;
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
     var chunkLeftSideX = latestChunk.chunkX;
@@ -169,8 +172,8 @@ function update(timestamp) {
     if (chunkRightSideX <= stage.canvas.width + blockSize * 3) { // Spawns new chunk after the currentChunk
         var randomLevel = Math.round(Math.random() * levels.length) - 1;
         randomLevel = randomLevel <= 0 ? 1 : randomLevel;
-        if (randomLevel == lastLevel) randomLevel = lastLevel === 0 ? randomLevel + 1 : randomLevel - 1;
-        console.log("Last: " + lastLevel + "   Random: " + randomLevel);
+        //if (randomLevel == lastLevel) randomLevel = lastLevel === 0 ? randomLevel + 1 : randomLevel - 1;
+        //console.log("Last: " + lastLevel + "   Random: " + randomLevel);
         lastLevel = randomLevel;
         chunksTillBonus--;
         isBonus = chunksTillBonus <= 0;
@@ -226,9 +229,7 @@ function update(timestamp) {
 
     try {
         var outChunk = chunks.findIndex(chunk => chunk.blocks[0].x + chunk.w <= 0);
-    } catch {
-        console.log("EH I'M ERRORING HERE!");
-    }
+    } catch {}
 
     if(outChunk !== -1){
         chunks.splice(outChunk, 1);
@@ -325,7 +326,7 @@ document.addEventListener('keydown', function (event) {
 
     }
 
-    if (event.key == 'f' && player.onGround) {
+    if ((event.key == 'f' || event.key == 'F') && player.onGround) {
 
         player.gravityDir = -player.gravityDir;
         player.onGround = false;
