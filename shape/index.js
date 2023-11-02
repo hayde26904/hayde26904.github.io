@@ -7,7 +7,7 @@ stage.imageSmoothingEnabled = false;
 var screenShake = false;
 var shakeAmount = 15;
 //const globalScrollSpd = 0;
-const globalGravity = 5;
+var globalGravity = 5;
 //const globalGravity = 0;
 //const globalGravity = 3;
 
@@ -153,6 +153,7 @@ function update(timestamp) {
     globalScrollSpd = Math.floor((scrollSpd + (gameTime/1000))); //Make scrollspeed speed up longer you play
     
     globalScrollSpd = globalScrollSpd * deltaTime;
+    globalGravity = globalGravity * deltaTime;
 
     var chunkRightSideX = latestChunk.chunkX + latestChunk.w;
     var chunkLeftSideX = latestChunk.chunkX;
@@ -270,7 +271,7 @@ function update(timestamp) {
         testPlayerCollisions(player.currentChunk);
     } else {
         if (!player.exploded) { //Make player explode if the player has not already exploded
-            explode(30, player, globalGravity);
+            explode(30, player, 1);
             player.exploded = true;
             shakeScreen(250);
         }
