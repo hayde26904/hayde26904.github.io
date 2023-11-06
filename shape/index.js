@@ -7,11 +7,7 @@ stage.imageSmoothingEnabled = false;
 var screenShake = false;
 var shakeAmount = 15;
 //const globalScrollSpd = 0;
-<<<<<<< HEAD
 var globalGravity = 5.1;
-=======
-var globalGravity = 5;
->>>>>>> c0c713cfb7aea16af9f5c4aed56a13cd57978c4c
 //const globalGravity = 0;
 //const globalGravity = 3;
 
@@ -158,7 +154,6 @@ function update(timestamp) {
     globalScrollSpd = Math.floor((scrollSpd + (gameTime/1000))); //Make scrollspeed speed up longer you play
     
     globalScrollSpd = globalScrollSpd * deltaTime;
-    globalGravity = globalGravity * deltaTime;
 
     globalGravity = globalGravity * deltaTime;
 
