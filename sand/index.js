@@ -21,7 +21,7 @@ class Grain {
 
     draw(ctx){
         ctx.fillStyle = this.c;
-        ctx.fillRect(this.x, this.y, 1,1);
+        ctx.fillRect(this.x, this.y, 10,10);
     }
 
     physics(gravity){
@@ -34,8 +34,9 @@ class Grain {
 }
 
 let grains = [];
+let otherGrains = [];
 
-for(i=0;i<10000;i++){
+for(i=0;i<100;i++){
     grains.push(new Grain(Math.floor(Math.random()*500),Math.floor(Math.random()*300),grainColors))
 }
 
@@ -43,6 +44,8 @@ function update(timestamp){
     const deltaTime = (timestamp - lastTime)/1000;
 
     ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
+
+    otherGrains = grains;
 
     for(g=0;g<grains.length;g++){
         grain = grains[g];
@@ -54,12 +57,16 @@ function update(timestamp){
             grain.onGround = true;
         }
 
-        for(o=0;o<grains.length;o++){
+
+
+        /*for(o=0;o<grains.length;o++){
             otherGrain = grains[o];
-            /*grainOverlapIndex = grains.findIndex(grain => 
-            eval('grain.' + ['x+=1;','x-=1;','y+=1','y-=1'][Math.floor(Math.random()*4)];*/
+            grainOverlapIndex = grains.findIndex(g => (otherGrain.x == g.x && otherGrain.y == g.y));
+            if(grainOverlapIndex !== -1){
+                eval('grain.' + ['x+=1;','x-=1;','y+=1','y-=1'][Math.floor(Math.random()*4)]);
+            }
             
-        }
+        }*/
     }
 
     lastTime = timestamp;
