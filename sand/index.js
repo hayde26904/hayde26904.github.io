@@ -7,6 +7,10 @@ const gravity = 3;
 
 let grainColors = ['#C2B280','#8f835d','#cfbd84','#ebd696'];
 
+function grainCollision(g1,g2){
+
+}
+
 class Grain {
     constructor(x,y,c){
         this.x = x;
@@ -21,7 +25,7 @@ class Grain {
 
     draw(ctx){
         ctx.fillStyle = this.c;
-        ctx.fillRect(this.x, this.y, 10,10);
+        ctx.fillRect(this.x, this.y, 5,5);
     }
 
     physics(gravity){
@@ -36,7 +40,7 @@ class Grain {
 let grains = [];
 let otherGrains = [];
 
-for(i=0;i<100;i++){
+for(i=0;i<1000;i++){
     grains.push(new Grain(Math.floor(Math.random()*500),Math.floor(Math.random()*300),grainColors))
 }
 
@@ -59,14 +63,14 @@ function update(timestamp){
 
 
 
-        /*for(o=0;o<grains.length;o++){
+        for(o=0;o<grains.length;o++){
             otherGrain = grains[o];
-            grainOverlapIndex = grains.findIndex(g => (otherGrain.x == g.x && otherGrain.y == g.y));
+            grainOverlapIndex = grains.findIndex(g => (otherGrain.x == grain.x && otherGrain.y == grain.y));
             if(grainOverlapIndex !== -1){
-                eval('grain.' + ['x+=1;','x-=1;','y+=1','y-=1'][Math.floor(Math.random()*4)]);
+                eval('grain.' + ['x+=1;','x-=1;','y-=1'][Math.floor(Math.random()*3)]);
             }
             
-        }*/
+        }
     }
 
     lastTime = timestamp;
