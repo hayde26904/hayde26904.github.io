@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="fileUpload">
+    <br>
+    <h1 id="outputHeader"></h1>
+    <script type="module">
+        let fileUpload = document.getElementById("fileUpload");
+        let outputHeader = document.getElementById("outputHeader");
+        let file;
+
+        function fetchJSONData(path) {
+            fetch(path)
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            (`HTTP error! Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((data) => {
+                      return data;})
+                .catch((error) => 
+                       console.error("Unable to fetch data:", error));
+        }
+
+        fileUpload.onchange = function(){
+            let file = fileUpload.value;
+            outputHeader.innerText = fetchJSONData(file);
+        }
+
+    </script>
+</body>
+</html>
