@@ -313,11 +313,9 @@ function update(timestamp) {
     }
 
     lastTimestamp = timestamp;
-    //requestAnimationFrame(update);
+    requestAnimationFrame(update);
 
 }
-
-setInterval(update, 1000/60);
 
 document.addEventListener('keydown', function (event) {
 
@@ -367,3 +365,4 @@ function shakeScreen(time) {
 
 
 }
+
